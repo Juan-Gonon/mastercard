@@ -9,7 +9,7 @@ const Navbar = ()=>{
         setSearch(e.target.value)
     }
 
-    console.log(search)
+
 
     return(
         <div>
