@@ -1,13 +1,18 @@
+import { useState } from "react";
 import EventItem from "./components/EventItem";
-import data from '../../data/events.json'
+import eventsJson from '../../data/events.json'
 
-console.log(data)
+console.log(eventsJson)
 
-const {_embedded : {events}} = data;
+//const {_embedded : {events}} = data;
 
-console.log(events)
+// console.log(events)
 
 const Events = ()=>{
+    const [data] = useState(eventsJson);
+    const {_embedded : {events}} = data;
+
+
 
     const eventsComponent = events.map((element)=> {
         return  <EventItem key={`event-item-${element.id}`}
