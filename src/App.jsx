@@ -18,7 +18,6 @@ function App() {
 
   }
 
-  console.log(searchTerm, 10)
 
   return (
     <>
