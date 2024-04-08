@@ -11,7 +11,7 @@ console.log(eventsJson)
 const Events = ({searchValue})=>{
     const [data] = useState(eventsJson);
     const {_embedded : {events}} = data;
-    console.log(events)
+   
 
     const handleEventItemClick = (id)=>{
         console.log('ha click el id: ', id)
