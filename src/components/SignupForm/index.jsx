@@ -18,8 +18,6 @@ const SignupForm = ()=>{
 
     }
 
-    console.log(errors)
-
 
     return <>
         <form onSubmit={handleSubmit(handleSubmitForm)}>

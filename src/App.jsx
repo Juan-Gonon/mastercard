@@ -22,10 +22,10 @@ function App() {
 
   return (
     <>
-      {/* <Navbar onSearch={handleNavbarSearch} />
-      <Events searchValue={searchTerm}/> */}
+      <Navbar onSearch={handleNavbarSearch} />
+      <Events searchValue={searchTerm}/>
 
-      <SignupForm></SignupForm>
+      
     </>
   )
 }
