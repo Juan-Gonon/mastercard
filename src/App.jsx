@@ -12,7 +12,7 @@ function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
   useEffect(()=>{
-    console.log('use Efect')
+  
   }, [searchTerm]);
 
   

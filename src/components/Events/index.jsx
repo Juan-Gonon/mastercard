@@ -8,7 +8,7 @@ import EventItem from "./components/EventItem";
   
 
 const Events = ({searchValue})=>{
-    const {events} = useEventsData();
+    const {events, isLoading, error} = useEventsData();
     console.log(events)
  
    
@@ -34,7 +34,16 @@ const Events = ({searchValue})=>{
             onEventClick={handleEventItemClick}
             id={element.id}
              />
-        })
+        });
+    };
+
+
+    if(error){
+        return <div>Ha ocurrido un error</div>
+    }
+
+    if(isLoading){
+        return <div>Cargando resultados...</div>
     }
 
 
