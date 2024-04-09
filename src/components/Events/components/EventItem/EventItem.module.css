@@ -1,0 +1,39 @@
+.eventItemContainer{
+    display: flex;
+
+ 
+ 
+     .infoContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 15px;
+
+
+        .infoEventName{
+            margin: 0;
+            font-size: 22px;
+           
+        }
+
+        .infoEventInfo{
+            text-align: left;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+           
+
+        }
+        .infoEventButton{
+            margin-top: 8px;
+       
+
+        }
+
+     }
+
+
+}

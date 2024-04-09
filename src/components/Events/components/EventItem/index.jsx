@@ -1,4 +1,8 @@
-import './style.css';
+// import './style.css';
+import style from './EventItem.module.css';
+
+console.log(style)
+
 
 const EventItem = ({info, id, name, image, onEventClick})=>{
 
@@ -10,14 +14,14 @@ const EventItem = ({info, id, name, image, onEventClick})=>{
 
     return (
 
-        <div onClick={()=> console.log('Padre click')} className='event__item-container'>
+        <div onClick={()=> console.log('Padre click')} className={style.eventItemContainer}>
             <div className="event__img">
             <img src={image} alt={name} width={200} />
             </div>
-            <div className="info__container">
-                <h4 className='info__event-name'>{name}</h4>
-                <p className='info__event-info'>{info}</p>
-                <button className='info__event-button' onClick={handleSeeMoreClick} >Ver mas</button>
+            <div className={style.infoContainer}>
+                <h4 className={style.infoEventName}>{name}</h4>
+                <p className={style.infoEventInfo}>{info}</p>
+                <button className={style.infoEventButton} onClick={handleSeeMoreClick} >Ver mas</button>
             </div>
 
         </div>
