@@ -20,8 +20,6 @@ const useEventsData = ()=>{
                 setError(error)
             }
            
-       
-            
         }, 4000)
     }, [])
 

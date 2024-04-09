@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 
-const Navbar = ({onSearch})=>{
+const Navbar = forwardRef(({onSearch}, ref)=>{
     const [search, setSearch] = useState('');
+
 
     useEffect(()=>{
         console.log('1010 effect')
@@ -19,10 +20,10 @@ const Navbar = ({onSearch})=>{
         }
     }
 
-
+  
 
     return(
-        <div>
+        <div ref={ref} >
             <p>Mi boletará</p>
             <input placeholder="Busca tu evento favorito"
             onChange={handleInputChange}
@@ -32,7 +33,7 @@ const Navbar = ({onSearch})=>{
         </div>
     );
 
-};
+});
 
 
 export default Navbar;

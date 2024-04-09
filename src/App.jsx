@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import Navbar from './components/Navbar/index';
 import Events from './components/Events';
@@ -11,22 +11,24 @@ import './App.css';
 function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
+  const containerRef = useRef();
+
+
   useEffect(()=>{
-  
+    console.log('Hola soy el searchTerm');
   }, [searchTerm]);
 
   
   const handleNavbarSearch = (term)=>{
+    console.log(containerRef.current)
     setSearchTerm(term)
-
-    console.log(term);
 
   }
 
 
   return (
     <>
-      <Navbar onSearch={handleNavbarSearch} />
+      <Navbar onSearch={handleNavbarSearch} ref={containerRef} />
       <Events searchValue={searchTerm}/>
 
       
