@@ -29,13 +29,54 @@ const Navbar = forwardRef(({onSearch}, ref)=>{
   
 
     return(
-        <div ref={ref} >
-            <p>Mi boletará</p>
+        <div ref={ref} style={{
+            background: "#333",
+            width: "100%",
+            color: "#333",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+           padding: "5px 20px",
+           color: "#fff",
+           boxSizing: "border-box",
+           gap: "15px",
+
+
+        }} >
+            <div style={{
+                width: "max-content",
+                fontSize: "1.2rem",
+                textTransform: "uppercase",
+                cursor: "pointer",
+                fontWeight: "600"
+
+
+            }}><p>Mi boletará</p></div>
+            <div style={{
+                background: "#555",
+                width: "250px",
+                height: "40px",
+                overflow: "hidden",
+                borderRadius: "5px",
+              
+
+            }}>
             <input placeholder="Busca tu evento favorito"
             onChange={handleInputChange}
             value={search}
             onKeyDown={handleInputKeyDown}
+            style={{
+                width: "100%",
+                height: "100%",
+                background: "transparent",
+               padding: "0 15px",
+               outline: "none",
+               border: "none",
+          
+               
+            }}
             />
+            </div>
         </div>
     );
 
