@@ -5,11 +5,10 @@ import EventItem from "./components/EventItem";
 
    
 
-  
 
 const Events = ({searchValue})=>{
     const {events, isLoading, error} = useEventsData();
-    console.log(events)
+
  
    
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
+
 const Navbar = forwardRef(({onSearch}, ref)=>{
     const [search, setSearch] = useState('');
 
