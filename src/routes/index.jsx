@@ -2,17 +2,21 @@ import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
+  import Detail from "../views/Detail";
+  import Home from "../views/Home";
+
 
   const router = createBrowserRouter([
     {
         path: '/',
-        element: <div className="home">Home</div>
+        element: <Home></Home>
     },
     {
         path: '/detail',
-        element: <div className="detail">Detail</div>
+        element: <Detail></Detail>
     }
   ])
+
 
 
 const MyRoutes = ()=> <RouterProvider router={router} />
