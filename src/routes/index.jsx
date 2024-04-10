@@ -14,7 +14,7 @@ import {
         errorElement: <Error404></Error404>
     },
     {
-        path: '/detail',
+        path: '/detail/:eventId',
         element: <Detail></Detail>
     }
   ])
