@@ -33,14 +33,13 @@ const Navbar = forwardRef(({onSearch}, ref)=>{
         <div ref={ref} style={{
             background: "#333",
             width: "100%",
-            color: "#333",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-           padding: "5px 20px",
-           color: "#fff",
-           boxSizing: "border-box",
-           gap: "15px",
+            padding: "5px 20px",
+            color: "#fff",
+            boxSizing: "border-box",
+            gap: "15px",
 
 
         }} >
