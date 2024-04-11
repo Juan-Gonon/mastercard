@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
 import useEventsData from "../../components/hooks/useEventsData";
 // import SignupForm from './components/SignupForm';
-import style from './Home.module.css'
+import style from "./Home.module.css";
 
 const Home = () => {
   const { events, page, isLoading, error, fetchEvents } = useEventsData();
@@ -25,8 +25,9 @@ const Home = () => {
     fetchEvents(`&keyword=${term}`);
   };
 
-  const handlePageClick = ({selected})=>{
-    console.log(selected)
+  const handlePageClick = ({ selected }) => {
+    console.log(selected);
+    fetchEvents(`&keyword=${searchTerm}&page=${selected}`);
   };
 
   const renderEvents = () => {
@@ -37,11 +38,18 @@ const Home = () => {
     if (error) {
       return <div>Ha ocurrido un error</div>;
     }
+    
 
     return (
       <div>
         <Events searchValue={searchTerm} events={events} />
         <ReactPaginate
+          className={style.pagination}
+          nextClassName={style.next}
+          previousClassName={style.previous}
+          pageClassName={style.page}
+          activeClassName={style.activePage}
+          disabledClassName={style.disablePage}
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
