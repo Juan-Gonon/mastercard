@@ -2,6 +2,9 @@ import { useEffect, useState} from "react";
 
 import {useParams} from "react-router-dom";
 
+import style from "./Detail.module.css";
+
+
 const Detail = ()=> {
 
     const {eventId} = useParams();
@@ -32,8 +35,24 @@ const Detail = ()=> {
         fetchEventData();
     }, [])
 
+    if(isLoading && Object.keys(eventDta) === 0){
+        return <div>Cargando evento...</div>
+    }
+
+    if(Object.keys(error) > 0){
+        return <div>Ha ocurrido un error...</div>
+    }
+
     console.log(eventDta)
-    return <div className="details">Detail</div>
+    return (
+        <div className={style.container}>
+            <div className={style.mainInfoContainer}>
+                <img src={eventDta.images?.[0].url} alt="img" />
+                <h4>{eventDta.name}</h4>
+                <p>{eventDta.info}</p>
+            </div>
+        </div>
+    )
 }
 
 
