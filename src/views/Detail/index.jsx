@@ -1,6 +1,8 @@
 import { useEffect, useState} from "react";
 
 import {useParams} from "react-router-dom";
+import {format} from "date-fns";
+import { es } from "date-fns/locale";
 
 import style from "./Detail.module.css";
 
@@ -47,9 +49,12 @@ const Detail = ()=> {
     return (
         <div className={style.container}>
             <div className={style.mainInfoContainer}>
-                <img src={eventDta.images?.[0].url} alt="img" />
-                <h4>{eventDta.name}</h4>
+                <img src={eventDta.images?.[0].url} alt={eventDta.name} className={style.eventImage} />
+                <h4 className={style.eventName} >{eventDta.name}</h4>
                 <p>{eventDta.info}</p>
+                {eventDta.dates?.start.dateTime ? <p>{format(new Date(eventDta?.dates.start.dateTime), 'd LLLL yyyy H:mm', {locale:es})}hrs</p> : null}
+                
+             
             </div>
         </div>
     )
