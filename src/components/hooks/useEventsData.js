@@ -16,6 +16,7 @@ const useEventsData = () => {
         throw new Error("Failed to fetch events. Status: " + response.status);
       } else {
         const data = await response.json();
+        console.log(data)
         setData(data);
         setIsLoading(false);
       }
@@ -29,6 +30,7 @@ const useEventsData = () => {
 
   return {
     events: data._embedded?.events || [],
+    page: data?.page || {},
     isLoading,
     error,
     fetchEvents,

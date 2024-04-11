@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import ReactPaginate from "react-paginate";
 import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
 import useEventsData from "../../components/hooks/useEventsData";
 // import SignupForm from './components/SignupForm';
+import style from './Home.module.css'
 
 const Home = () => {
-  const { events, isLoading, error, fetchEvents } = useEventsData();
+  const { events, page, isLoading, error, fetchEvents } = useEventsData();
   const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef();
 
@@ -17,20 +19,45 @@ const Home = () => {
     fetchEvents();
   }, []);
 
- 
-
-
   const handleNavbarSearch = (term) => {
     console.log(containerRef.current);
     setSearchTerm(term);
     fetchEvents(`&keyword=${term}`);
   };
 
+  const handlePageClick = ({selected})=>{
+    console.log(selected)
+  };
+
+  const renderEvents = () => {
+    if (isLoading) {
+      return <div>Cargando resultados...</div>;
+    }
+
+    if (error) {
+      return <div>Ha ocurrido un error</div>;
+    }
+
+    return (
+      <div>
+        <Events searchValue={searchTerm} events={events} />
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={page.totalPages}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
+      </div>
+    );
+  };
+
   return (
     <>
       <Navbar onSearch={handleNavbarSearch} ref={containerRef} />
-      {isLoading ? <div>Cargando resultados...</div> : <Events searchValue={searchTerm} events={events} />}
-      {!!error && <div>Ha ocurrido un error</div>}
+      {renderEvents()}
     </>
   );
 };
