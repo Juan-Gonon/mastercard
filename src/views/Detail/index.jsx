@@ -14,20 +14,29 @@ const Detail = ()=> {
     const [error, setError] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log(eventId)
 
     useEffect(()=>{
         const fetchEventData = async ()=>{
             try{
-                const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=J2HCSxqn9fAoV9fUHdB0zYlplrSJGxkU&countryCode=MX`);
+                const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`);
 
-                const data = await response.json();
+                console.log(response)
+                if(response.status != 200){
+                    throw new Error ('Error en el servidor');
+                }else{
+                    const data = await response.json();
 
-                setData(data)
-                setIsLoading(false)
+                    console.log(data)
+
+                    setData(data)
+                    setIsLoading(false)
+                }
+
+             
                 // console.log(data)
 
             }catch(e){
+                console.log(e)
                 setData({});
                 setError(e)
                 setIsLoading(false)
@@ -58,8 +67,8 @@ const Detail = ()=> {
             </div>
 
             <div className={style.seatInfoContainer}>
-                <h6 className={style.setMapTitle} >Mapa del evento</h6>
-              <img src={eventDta.images?.[10].url} alt="img" />
+              <h6 className={style.setMapTitle} >Mapa del evento</h6>
+              <img src={eventDta.seatmap?.staticUrl} alt="img" />
               <p className={style.pleaseNoteLegend}>{eventDta.pleaseNote}</p>
               <p className={style.priceRangeLegend} >Rango de precios: {eventDta.priceRanges?.[0].min} - {eventDta.priceRanges?.[0].max} {eventDta.priceRanges?.[0].currency} </p>
             </div>
