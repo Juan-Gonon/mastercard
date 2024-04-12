@@ -49,13 +49,22 @@ const Detail = ()=> {
     return (
         <div className={style.container}>
             <div className={style.mainInfoContainer}>
-                <img src={eventDta.images?.[0].url} alt={eventDta.name} className={style.eventImage} />
+                <img src={eventDta.images?.[10].url} alt={eventDta.name} className={style.eventImage} />
                 <h4 className={style.eventName} >{eventDta.name}</h4>
-                <p>{eventDta.info}</p>
-                {eventDta.dates?.start.dateTime ? <p>{format(new Date(eventDta?.dates.start.dateTime), 'd LLLL yyyy H:mm', {locale:es})}hrs</p> : null}
+                <p className={style.infoParagraph} >{eventDta.info}</p>
+                {eventDta.dates?.start.dateTime ? <p className={style.dateParagraph} >{format(new Date(eventDta?.dates.start.dateTime), 'd LLLL yyyy H:mm', {locale:es})}hrs</p> : null}
                 
              
             </div>
+
+            <div className={style.seatInfoContainer}>
+                <h6 className={style.setMapTitle} >Mapa del evento</h6>
+              <img src={eventDta.images?.[10].url} alt="img" />
+              <p className={style.pleaseNoteLegend}>{eventDta.pleaseNote}</p>
+              <p className={style.priceRangeLegend} >Rango de precios: {eventDta.priceRanges?.[0].min} - {eventDta.priceRanges?.[0].max} {eventDta.priceRanges?.[0].currency} </p>
+            </div>
+
+            <a href={eventDta.url} className={style.btnIr} >Ir por tus boletos</a>
         </div>
     )
 }
