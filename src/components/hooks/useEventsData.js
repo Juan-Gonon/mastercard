@@ -1,8 +1,11 @@
 import { useState} from "react";
 import eventsData from "../../data/events.json";
+import useEventsResults from "../../state/events-results";
 
 const useEventsData = () => {
 
+  const {data, isLoading, error, fetchEvents} = useEventsResults();
+  
 
 
 
