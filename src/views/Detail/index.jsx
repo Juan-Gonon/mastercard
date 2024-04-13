@@ -3,30 +3,28 @@ import { useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {format} from "date-fns";
 import { es } from "date-fns/locale";
-
+import useEventsResults from "../../state/events-results";
 import style from "./Detail.module.css";
 
 
 const Detail = ()=> {
-
+    const {data} = useEventsResults()
     const {eventId} = useParams();
     const [eventDta, setData] = useState({});
     const [error, setError] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    console.log(data)
 
     useEffect(()=>{
         const fetchEventData = async ()=>{
             try{
                 const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`);
 
-                console.log(response)
                 if(response.status != 200){
                     throw new Error ('Error en el servidor');
                 }else{
                     const data = await response.json();
-
-                    console.log(data)
 
                     setData(data)
                     setIsLoading(false)
@@ -54,7 +52,6 @@ const Detail = ()=> {
         return <div>Ha ocurrido un error...</div>
     }
 
-    console.log(eventDta)
     return (
         <div className={style.container}>
             <div className={style.mainInfoContainer}>

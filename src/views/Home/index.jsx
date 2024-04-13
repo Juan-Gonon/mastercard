@@ -9,14 +9,13 @@ import style from "./Home.module.css";
 
 const Home = () => {
   const {data, isLoading, error, fetchEvents} = useEventsResults();
-  const events = data?.embedded?.events || [];
+  const events = data?._embedded?.events || [];
   const page = data?.page || {};
 
 
   const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef();
-  
-  console.log(data);
+
 
 
   useEffect(() => {
