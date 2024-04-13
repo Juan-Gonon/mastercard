@@ -4,12 +4,20 @@ import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
 import useEventsData from "../../components/hooks/useEventsData";
 // import SignupForm from './components/SignupForm';
+import useEventsResults from "../../state/events-results";
 import style from "./Home.module.css";
 
 const Home = () => {
-  const { events, page, isLoading, error, fetchEvents } = useEventsData();
+  const {data, isLoading, error, fetchEvents} = useEventsResults();
+  const events = data?.embedded?.events || [];
+  const page = data?.page || {};
+
+
   const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef();
+  
+  console.log(data);
+
 
   useEffect(() => {
     console.log("Hola soy el searchTerm");
