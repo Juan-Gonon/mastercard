@@ -6,6 +6,8 @@ import {
   import Home from "../views/Home";
   import Error404 from "../views/Error";
   import Profile from "../views/Profile";
+  import ZusOne from "../views/zusOne";
+  import ZusTwo from "../views/zusTwo";
 
 
   const router = createBrowserRouter([
@@ -29,6 +31,12 @@ import {
                 element: <div>Liked Events</div>
             }
         ]
+    },{
+        path : '/zusOne',
+        element: <ZusOne></ZusOne>,
+    },{
+        path : '/zusTwo',
+        element: <ZusTwo></ZusTwo>
     }
   ])
 
