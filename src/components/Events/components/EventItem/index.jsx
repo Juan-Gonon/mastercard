@@ -6,7 +6,7 @@ import useLikedEvents from '../../../hooks/useLikedEvents';
 
 
 const EventItem = ({info, id, name, image, onEventClick})=>{
-    const {isEventLiked} = useLikedEvents(id);
+    const {isEventLiked, toggleEventLike} = useLikedEvents(id);
 
     const handleSeeMoreClick = (e)=>{
         e.stopPropagation();
@@ -14,7 +14,7 @@ const EventItem = ({info, id, name, image, onEventClick})=>{
     }
 
     const handleHearthClick = ()=>{
-
+        toggleEventLike();
     }
 
 
