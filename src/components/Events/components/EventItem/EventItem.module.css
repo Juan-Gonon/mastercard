@@ -1,6 +1,19 @@
 .eventItemContainer{
     display: flex;
 
+    .eventImg{
+        position: relative;
+        background: aqua;
+        .hearthFilled{
+            position: absolute;
+            width: 25px;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            cursor: pointer;
+        }
+    }
+
  
  
      .infoContainer{
