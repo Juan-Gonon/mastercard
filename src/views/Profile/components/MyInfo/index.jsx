@@ -1,12 +1,21 @@
 import {useForm} from 'react-hook-form';
 import style from './MyInfo.module.css'
+import { json } from 'react-router-dom';
 
+
+
+const USER_DATA = 'userData';
 
 const MyInfo = ()=>{
     const {handleSubmit, register, formState:{errors}} = useForm();
 
     const handleFormSubmit = (data)=>{
-        console.log(data)
+        try{
+            localStorage.setItem(USER_DATA, JSON.stringify(data))
+            alert('Usuario actualizado')
+        }catch(e){
+            alert('Ha ocurrido un error');
+        }
     }
 
 
