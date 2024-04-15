@@ -8,7 +8,8 @@ import {
   import Profile from "../views/Profile";
   import ZusOne from "../views/zusOne";
   import ZusTwo from "../views/zusTwo";
-
+  import LikedEvents from "../views/Profile/components/LikedEvents";
+  import MyInfo from "../views/Profile/components/MyInfo";
 
   const router = createBrowserRouter([
     {
@@ -25,10 +26,10 @@ import {
         children: [
             {
                 path: 'my-info',
-                element: <div>My info</div>
+                element: <MyInfo></MyInfo>
             },{
                 path: 'liked-events',
-                element: <div>Liked Events</div>
+                element: <LikedEvents></LikedEvents>
             }
         ]
     },{

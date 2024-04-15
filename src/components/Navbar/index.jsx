@@ -1,4 +1,5 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
+import { Link } from "react-router-dom";
 
 
 const Navbar = forwardRef(({onSearch}, ref)=>{
@@ -52,6 +53,20 @@ const Navbar = forwardRef(({onSearch}, ref)=>{
 
 
             }}><p>Mi boletará</p></div>
+                 <div className="perfil" style={{
+                    background: "#444",
+                    padding : "5px 15px",
+                    flex: "1",
+                    borderRadius: "8px"
+                 }}>
+                <Link to="/profile/my-info" style={{
+                    marginLeft : "24px",
+                    color: "#fff",
+                    textDecoration : "none",
+
+                }}>Mi perfil</Link>
+            </div>
+
             <div style={{
                 background: "#555",
                 width: "250px",
@@ -77,6 +92,7 @@ const Navbar = forwardRef(({onSearch}, ref)=>{
             }}
             />
             </div>
+       
         </div>
     );
 
