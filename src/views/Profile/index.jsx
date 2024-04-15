@@ -1,4 +1,4 @@
-import {Outlet, useLocation, useNavigate } from "react-router-dom";
+import {Outlet, useLocation, useNavigate, Link } from "react-router-dom";
 import style from './profile.module.css'
 
 
@@ -15,15 +15,20 @@ const Profile = ()=>{
     console.log(pathname)
     return (
         <div className="profile">
-            <div>
+            <Link to="/" className={style.homeLink} >Inicio</Link>
+            <div className={style.tabsContainer}>
                 <span 
-                className={pathname.includes('my-info') ? style.active : ''}
-                onClick={()=> handleTabClick('my-info')} 
+                className={`${pathname.includes('my-info') ? style.active : ''} ${style.tabs}`}
+                onClick={()=> handleTabClick('my-info')}
+                style={{
+                    marginRight : "8px",
+
+                }}
                 >
                     My información 
                 </span>
                 <span 
-                className={pathname.includes('liked-events') ? style.active : ''}
+                className={`${pathname.includes('liked-events') ? style.active : ''} ${style.tabs}`}
                 onClick={()=> handleTabClick('liked-events')} 
                 >
                     Eventos Favoritos
