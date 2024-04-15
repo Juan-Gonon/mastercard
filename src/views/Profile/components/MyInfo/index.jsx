@@ -1,13 +1,28 @@
 import {useForm} from 'react-hook-form';
 import style from './MyInfo.module.css'
 import { json } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
 const USER_DATA = 'userData';
 
 const MyInfo = ()=>{
-    const {handleSubmit, register, formState:{errors}} = useForm();
+    const {handleSubmit, register, formState:{errors}, setValue} = useForm();
+
+    useEffect(()=>{
+        try{
+            const userData = JSON.parse(localStorage.getItem(USER_DATA));
+
+            setValue('name', userData?.name)
+            setValue('email', userData?.email)
+            setValue('age', userData?.age)
+
+        }catch(error){
+            console.log(error)
+        }
+
+    }, [])
 
     const handleFormSubmit = (data)=>{
         try{
