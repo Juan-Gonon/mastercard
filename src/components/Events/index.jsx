@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import EventItem from "./components/EventItem";
+import { memo } from "react";
 
 
 const Events = ({searchValue, events})=>{
@@ -10,6 +11,8 @@ const Events = ({searchValue, events})=>{
         console.log('ha click el id: ', id)
         navigate(`/detail/${id}`);
     }
+
+    console.log('render events')
 
     const renderEvents = ()=>{
 
@@ -42,4 +45,4 @@ const Events = ({searchValue, events})=>{
     );
 }
 
-export default Events;
+export default memo(Events);

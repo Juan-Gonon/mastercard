@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 
 const Navbar = forwardRef(({onSearch}, ref)=>{
@@ -99,4 +100,4 @@ const Navbar = forwardRef(({onSearch}, ref)=>{
 });
 
 
-export default Navbar;
+export default memo(Navbar);
