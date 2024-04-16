@@ -1,56 +1,31 @@
-import { useEffect, useState} from "react";
+
 
 import {useParams} from "react-router-dom";
 import {format} from "date-fns";
 import { es } from "date-fns/locale";
 import useEventsResults from "../../state/events-results";
+import eventFetcher from '../../utils/fetchEvents'
 import style from "./Detail.module.css";
 
 
+console.log(window.location)
+
+const pathname = window.location.pathname;
+const resource = eventFetcher(pathname.substring(8, pathname.length))
+
+console.log(pathname.substring(8, pathname.length))
+
+
 const Detail = ()=> {
-    const {data} = useEventsResults()
-    const {eventId} = useParams();
-    const [eventDta, setData] = useState({});
-    const [error, setError] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    //const {data} = useEventsResults()
+    //const {eventId} = useParams();
+    const eventDta = resource.eventDetail.read();
+
+    console.log(eventDta)
 
 
-    useEffect(()=>{
-        const fetchEventData = async ()=>{
-            try{
-                const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`);
 
-                if(response.status != 200){
-                    throw new Error ('Error en el servidor');
-                }else{
-                    const data = await response.json();
-
-                    setData(data)
-                    setIsLoading(false)
-                }
-
-             
-                // console.log(data)
-
-            }catch(e){
-                console.log(e)
-                setData({});
-                setError(e)
-                setIsLoading(false)
-            }
-        }
-
-        fetchEventData();
-    }, [])
-
-    if(isLoading && Object.keys(eventDta) === 0){
-        return <div>Cargando evento...</div>
-    }
-
-    if(Object.keys(error) > 0){
-        return <div>Ha ocurrido un error...</div>
-    }
-
+   
     return (
         <div className={style.container}>
             <div className={style.mainInfoContainer}>
