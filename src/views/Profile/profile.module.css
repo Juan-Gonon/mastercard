@@ -1,0 +1,28 @@
+.active{
+    border-bottom: 2px solid #fff;
+}
+
+.homeLink{
+    color: #fff;
+    text-decoration: none;
+}
+
+.tabsContainer{
+    margin: 12px 0;
+
+}
+
+.tabs{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 4px;
+    transition: opacity .5s;
+
+    &:hover{
+        opacity: .8;
+
+    }
+
+
+}

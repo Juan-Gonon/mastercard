@@ -1,17 +1,12 @@
-import Navbar from './components/Navbar/index';
-
+import Routes from './routes';
 import './App.css';
 
 
 
 function App() {
- 
 
-  return (
-    <>
-      <Navbar/>
-    </>
-  )
+
+  return <Routes/>
 }
 
 export default App
