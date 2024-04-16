@@ -2,6 +2,7 @@ import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
+  import { Suspense } from "react";
   import Detail from "../views/Detail";
   import Home from "../views/Home";
   import Error404 from "../views/Error";
@@ -19,7 +20,11 @@ import {
     },
     {
         path: '/detail/:eventId',
-        element: <Detail></Detail>
+        element: (
+            <Suspense fallback={<div>Cargando...</div>}>
+                <Detail></Detail>
+            </Suspense>
+        )
     },{
         path: '/profile',
         element: <Profile></Profile>,
