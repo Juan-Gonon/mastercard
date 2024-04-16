@@ -12,6 +12,7 @@ const MyInfo = ()=>{
 
     useEffect(()=>{
         try{
+          
             const userData = JSON.parse(localStorage.getItem(USER_DATA));
 
             setValue('name', userData?.name)
@@ -22,7 +23,7 @@ const MyInfo = ()=>{
             console.log(error)
         }
 
-    }, [])
+    }, [setValue])
 
     const handleFormSubmit = (data)=>{
         try{

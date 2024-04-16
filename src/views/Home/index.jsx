@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo, useReducer } from "react";
 import ReactPaginate from "react-paginate";
 import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
@@ -16,7 +16,9 @@ const Home = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef();
+  const fetchMyEventsRef = useRef()
 
+  fetchMyEventsRef.current = fetchEvents;
 
 
   useEffect(() => {
@@ -24,7 +26,8 @@ const Home = () => {
   }, [searchTerm]);
 
   useEffect(() => {
-    fetchEvents();
+    //fetchEvents();
+    fetchMyEventsRef.current();
   }, []);
 
   const handleNavbarSearch = (term) => {
