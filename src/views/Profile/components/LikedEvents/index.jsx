@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { LIKED_EVENTS_STORAGE_KEY } from "../../../../utils/constants";
+import EventItem from '../../../../components/Events/components/EventItem'
 
 
 const likedEvents = ()=>{
@@ -8,6 +9,13 @@ const likedEvents = ()=>{
     const [events, setEvents] = useState([]);
     const [isLoading, seIsLoading] = useState(false);
     const [error, setError] = useState({})
+    const navigate = useNavigate()
+
+
+    const handleEventItemClick = (id)=>{
+        console.log(id)
+        navigate(`/detail/${id}`);
+    }
 
 
     useEffect(()=>{
@@ -17,8 +25,6 @@ const likedEvents = ()=>{
               
                 const likeEvents = JSON.parse(localStorage.getItem(LIKED_EVENTS_STORAGE_KEY)) || [];
                   
-                  console.log(likeEvents)
-
                   const results = [];
 
 
@@ -26,11 +32,7 @@ const likedEvents = ()=>{
                     const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`);
 
                    
-
                     const data = await response.json()
-
-                    console.log(data)
-
                     results.push(data);
 
                   }
@@ -57,7 +59,16 @@ const likedEvents = ()=>{
     }
 
     return (
-        <div>Like events</div>
+        events.map((element, index)=>(<EventItem
+            key={`liked-event-item-${element.id}-${index}`}
+            name={element.name}
+            info={element.info}
+            image={element.images[0].url}
+            onEventClick={handleEventItemClick}
+            id={element.id}
+        >
+
+        </EventItem>))
     )
 }
 
