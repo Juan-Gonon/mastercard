@@ -11,6 +11,7 @@ import {
   import ZusTwo from "../views/zusTwo";
   import LikedEvents from "../views/Profile/components/LikedEvents";
   import MyInfo from "../views/Profile/components/MyInfo";
+  import ErrorBoundary from "../components/ErrorBoundary";
 
   const router = createBrowserRouter([
     {
@@ -22,7 +23,9 @@ import {
         path: '/detail/:eventId',
         element: (
             <Suspense fallback={<div>Cargando...</div>}>
-                <Detail></Detail>
+                <ErrorBoundary fallback={<div>Ha ocurrido un error al obtener el detalle</div>}>
+                    <Detail></Detail>
+                </ErrorBoundary>
             </Suspense>
         )
     },{

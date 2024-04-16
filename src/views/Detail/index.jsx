@@ -1,14 +1,14 @@
 
 
-import {useParams} from "react-router-dom";
+//import {useParams} from "react-router-dom";
 import {format} from "date-fns";
 import { es } from "date-fns/locale";
-import useEventsResults from "../../state/events-results";
+//import useEventsResults from "../../state/events-results";
 import eventFetcher from '../../utils/fetchEvents'
 import style from "./Detail.module.css";
 
 
-console.log(window.location)
+
 
 const pathname = window.location.pathname;
 const resource = eventFetcher(pathname.substring(8, pathname.length))
@@ -21,7 +21,7 @@ const Detail = ()=> {
     //const {eventId} = useParams();
     const eventDta = resource.eventDetail.read();
 
-    console.log(eventDta)
+
 
 
 
