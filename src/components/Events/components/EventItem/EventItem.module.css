@@ -3,7 +3,6 @@
 
     .eventImg{
         position: relative;
-        background: aqua;
         .hearthFilled{
             position: absolute;
             width: 25px;
